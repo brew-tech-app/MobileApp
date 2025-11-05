@@ -67,13 +67,13 @@ export default function LoginScreen() {
     const success = await login({ email, password });
     
     if (success) {
-      Logger.info('Login successful, navigating to phone verification');
-      navigation.navigate('PhoneVerification');
+      Logger.info('Login successful, navigating to home');
+      navigation.navigate('Home');
     } else if (error) {
       Logger.error('Login failed', { error });
       Alert.alert('Login Failed', error);
     }
-  }, [validateForm, login, error, navigation]);
+  }, [validateForm, login, error, navigation, email, password]);
 
   // UI Handlers
   const handleForgotPassword = useCallback(() => {
@@ -82,9 +82,9 @@ export default function LoginScreen() {
   }, []);
 
   const handleSignUp = useCallback(() => {
-    Logger.info('Navigate to sign up');
-    // TODO: Implement sign up navigation
-  }, []);
+    Logger.info('Navigate to registration');
+    navigation.navigate('Register');
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>

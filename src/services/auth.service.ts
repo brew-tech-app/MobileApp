@@ -8,10 +8,16 @@ export interface AuthCredentials {
 
 export interface AuthService {
   login(credentials: AuthCredentials): Promise<User>;
+  register(userData: RegistrationData): Promise<User>;
   logout(): Promise<void>;
   isAuthenticated(): Promise<boolean>;
-  verifyPhone(phone: string): Promise<boolean>;
   updateBusinessDetails(details: BusinessDetails): Promise<User>;
+}
+
+export interface RegistrationData {
+  name: string;
+  email: string;
+  password: string;
 }
 
 export interface BusinessDetails {
@@ -20,6 +26,24 @@ export interface BusinessDetails {
 }
 
 class AuthServiceImpl implements AuthService {
+  async register(userData: RegistrationData): Promise<User> {
+    try {
+      Logger.info('Registration attempt', { email: userData.email });
+      // Implement actual registration logic here
+      const user: User = {
+        id: Date.now().toString(),
+        name: userData.name,
+        email: userData.email,
+        phone: '',
+      };
+      Logger.info('Registration successful', { userId: user.id });
+      return user;
+    } catch (error) {
+      Logger.error('Registration failed', error);
+      throw new Error('Registration failed. Please try again.');
+    }
+  }
+
   async login(credentials: AuthCredentials): Promise<User> {
     try {
       Logger.info('Login attempt', { email: credentials.email });

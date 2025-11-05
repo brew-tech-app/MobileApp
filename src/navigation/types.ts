@@ -1,6 +1,6 @@
 export type RootStackParamList = {
   Login: undefined;
-  PhoneVerification: undefined;
+  Register: undefined;
   BusinessDetails: undefined;
   Home: undefined;
 };

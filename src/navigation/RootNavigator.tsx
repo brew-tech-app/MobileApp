@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/auth/LoginScreen';
-import PhoneVerificationScreen from '../screens/auth/PhoneVerificationScreen';
+import RegistrationScreen from '../screens/auth/RegistrationScreen';
 import BusinessDetailsScreen from '../screens/auth/BusinessDetailsScreen';
 import HomeScreen from '../screens/main/HomeScreen';
 import { RootStackParamList } from './types';
@@ -25,8 +25,8 @@ export default function RootNavigator() {
           component={LoginScreen}
         />
         <Stack.Screen 
-          name="PhoneVerification" 
-          component={PhoneVerificationScreen}
+          name="Register" 
+          component={RegistrationScreen}
         />
         <Stack.Screen 
           name="BusinessDetails" 
